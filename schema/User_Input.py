@@ -1,6 +1,7 @@
 
 from pydantic import BaseModel,Field,computed_field
 from typing import Optional,Literal,Annotated
+from config.city_tier import tier_1_cities,tier_2_cities
 
 
 class UserInput(BaseModel):
