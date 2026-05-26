@@ -31,12 +31,14 @@ def predict_premium(data: UserInput):
         "income_lpa": data.income_lpa,
         "occupation": data.occupation
     }
+    try:
+        prediction = predict_output(user_input)
 
-    prediction = predict_output(user_input)
-
-    return JSONResponse(
-        status_code=200,
-        content={
-            "Prediction":prediction
-        }
-    )
+        return JSONResponse(
+            status_code=200,
+            content={
+                "Prediction":prediction
+            }
+        )
+    except Exception as e:
+        return JSONResponse(status_code=500,content=str(e))
