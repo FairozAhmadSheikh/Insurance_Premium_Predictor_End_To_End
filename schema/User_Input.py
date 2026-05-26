@@ -60,7 +60,7 @@ class UserInput(BaseModel):
         else:
             return 3
     
-    @field_validator
+    @field_validator('city')
     @classmethod
     def normalize_city(cls,value:str)->str:
         value=value.strip().title()
