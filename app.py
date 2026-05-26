@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from schema.User_Input import UserInput
 from model.predict import MODEL_VERSION,model,predict_output
 import pandas as pd 
-
+from schema.prediction_response import PredictionResponse
 
 app=FastAPI()
 
@@ -20,7 +20,7 @@ def health_check():
             'Loaded_Model':model is not None
             }
 
-@app.post('/predict')
+@app.post('/predict',response_model=PredictionResponse)
 def predict_premium(data: UserInput):
 
     user_input ={
@@ -37,7 +37,7 @@ def predict_premium(data: UserInput):
         return JSONResponse(
             status_code=200,
             content={
-                "Prediction":prediction
+                "response":prediction
             }
         )
     except Exception as e:
