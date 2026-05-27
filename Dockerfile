@@ -5,8 +5,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # COPY and RUN
-COPY requiremenets.txt .
-RUN pip install --nocache-dir -r requiremenets.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
