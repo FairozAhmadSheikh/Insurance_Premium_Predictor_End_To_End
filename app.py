@@ -13,7 +13,7 @@ def home():
     return JSONResponse(status_code=200,content={"message":"This is a Insurance prediction API 💖"})
 
 # Health check route for Cloud Platform Deployment
-@app.post('/health')
+@app.get('/health')
 def health_check():
     return {"status":'OK',
             'Model_Version':MODEL_VERSION,
